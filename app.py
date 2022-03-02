@@ -77,6 +77,7 @@ def dashboard():
 @app.route('/register', methods=['GET','POST'])
 def register():
     form = RegisterForm()
+
     if form.validate_on_submit():
         # whenever form is submitted, hashed password will immediately be generate 
         hashed_password = bcrypt.generate_password_hash(form.password.data)
@@ -86,6 +87,12 @@ def register():
         return redirect(url_for('login'))
 
     return render_template('register.html', form=form)
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
 
 if __name__ == '__main__':
     app.run(debug=True)
