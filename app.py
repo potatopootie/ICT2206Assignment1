@@ -37,14 +37,14 @@ class RegisterForm(FlaskForm):
     password = PasswordField(validators=[InputRequired(),Length(min=4, max=20)], render_kw={"placeholder":"Password"})
     submit = SubmitField("Register")
 
-# Username validation 
-def validate_username(self, username):
-    existing_user_username = User.query.filter_by(
-        username=username.data).first()
-    # Username validation error if username already exists. 
-    if existing_user_username:
-        raise ValidationError(
-            "That username already exists. Please choose a different one.")
+    # Username validation 
+    def validate_username(self, username):
+        existing_user_username = User.query.filter_by(
+            username=username.data).first()
+        # Username validation error if username already exists. 
+        if existing_user_username:
+            raise ValidationError(
+                "That username already exists. Please choose a different one.")
 
 # Inherit from flask form (login)
 class LoginForm(FlaskForm):
