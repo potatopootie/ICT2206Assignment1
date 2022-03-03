@@ -5,6 +5,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError
 from flask_bcrypt import Bcrypt
+import random
 
 app = Flask(__name__)
 # creates database instance 
@@ -77,7 +78,11 @@ def dashboard():
 @app.route('/register', methods=['GET','POST'])
 def register():
     form = RegisterForm()
-
+    N = 6
+    images_ = random.sample(range(10, 46), N * N)
+    images = []
+    for i in range(0, N * N, N):
+        images.append(images_[i:i + N])
     if form.validate_on_submit():
         # whenever form is submitted, hashed password will immediately be generate 
         hashed_password = bcrypt.generate_password_hash(form.password.data)
@@ -86,7 +91,7 @@ def register():
         db.session.commit()
         return redirect(url_for('login'))
 
-    return render_template('register.html', form=form)
+    return render_template('register.html',images=images)
 
 @app.route('/logout')
 @login_required
