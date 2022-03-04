@@ -7,6 +7,7 @@
     <title>Registration</title>
 </head>
 <body>
+    <div class="content">
     <h1>Registration page</h1>
             <form method="POST" action="/register">
     
@@ -15,21 +16,20 @@
                         <input class="input is-large" type="text" name="username" placeholder="Username" autofocus="" required>
                     </div>
                 </div>
-                <div class="form-group">
+               <br><br> <div class="form-group">
             <label class="lab">Password: </label>
             {% for row in images %}
-            <div class="row no-gutters" style="width: auto;height: auto">
+                <div class="row no-gutters" style="width: auto;height: auto">
                 {% for password in row %}
-                    <div class="col-2 no-gutters">
+                    <div class="col-2 no-gutters" style=" display: inline-block; padding:5px;">
                         <label class="label_passwd">
                             <input type="checkbox" id="checkbox" name="password" value="{{password}}" />
-                        <img class="img" src="static/images/{{password}}.jpg" alt="{{password}}.jpg"/>
+                            <img class="img" src="static/images/{{password}}.jpg" alt="{{password}}.jpg"/>
                         </label>
-                        </div>
-                    {% endfor %}
-        
-            </div>
-                {% endfor %}
+                    </div>
+                 {% endfor %}
+                </div>
+            {% endfor %}
             <style>
                     [id=checkbox] {
                         display: none;
@@ -41,7 +41,7 @@
                             /* IMAGE STYLES */
                     [id=checkbox] + img {
                         box-shadow: 3px 3px 5px dimgray;
-                        border: 2px solid lightcoral;
+                        border: 2px solid rgb(53, 202, 202);
                         padding: 5px;
                         display: block;
                         position: relative;
@@ -55,12 +55,16 @@
                    
                             /* CHECKED STYLES */
                     [id=checkbox]:checked + img {
-                        border: 2px solid green;
+                        border: 2px solid rgb(12, 52, 112);
                         border-radius: 5px;
                         -moz-outline-radius: 5px;
                     }
+                    .content {
+                        max-width: 500px;
+                        margin:auto;
+                    }
             </style>
-            <h5 style="color: red;font-size: 15px;">NOTE: Please select at least 3 images</h5>
+            <h5 style="color: rgb(31, 118, 199);font-size: 15px;">NOTE: Please select at least 3 images</h5>
         </div>
         <button class="button is-block is-info is-large is-fullwidth">Sign Up</button>
 
@@ -68,7 +72,7 @@
 
     <a href="{{url_for('login')}}">Already have an account? Log in here</a>
 
-    
+</div>
 </body>
 
 </html>

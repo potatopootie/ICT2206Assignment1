@@ -47,8 +47,8 @@ class LoginForm(FlaskForm):
 # Register routing portion here 
 @app.route('/register')
 def register():
-    N = 6
-    images_ = random.sample(range(10, 46), N * N)
+    N = 4
+    images_ = random.sample(range(10, 26), N * N)
     images = []
     for i in range(0, N * N, N):
         images.append(images_[i:i + N])
@@ -66,7 +66,7 @@ def register_post():
     else:
         password_1 = sorted(request.form.getlist('password'))
         password_1 = ''.join(map(str, password_1))
-        if len(password_1) < 2:
+        if len(password_1) < 6:
             flash("password must be minimum 3 selections")
             return redirect(url_for('register'))
         else:
@@ -84,8 +84,8 @@ def register_post():
 
 @app.route('/login')
 def login():
-    N = 6
-    images_ = random.sample(range(10, 46), N * N)
+    N = 4
+    images_ = random.sample(range(10, 26), N * N)
     images = []
     for i in range(0, N * N, N):
         images.append(images_[i:i + N])
