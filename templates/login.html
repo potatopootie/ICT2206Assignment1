@@ -7,16 +7,70 @@
     <title>Login</title>
 </head>
 <body>
+    <div class="content">
     <h1>Login Page</h1>
 
-    <form method="POST" action="">
-        {{ form.hidden_tag() }}
-        {{ form.username }}
-        {{ form.password }}
-        {{ form.submit }}
-    </form>
+    <form method="POST" action="/login">
+    
+        <div class="field">
+            <div class="control">
+                <input class="input is-large" type="text" name="username" placeholder="Username" autofocus="" required>
+            </div>
+        </div>
+        <div class="form-group">
+    <br><br><label class="lab">Password: </label>
+    {% for row in images %}
+    <div class="row no-gutters" style="width: auto;height: auto">
+        {% for password in row %}
+            <div class="col-2 no-gutters" style="display: inline-block; padding:5px;">
+                <label class="label_passwd">
+                    <input type="checkbox" id="checkbox" name="password" value="{{password}}" />
+                <img class="img" src="static/images/{{password}}.jpg" alt="{{password}}.jpg"/>
+                </label>
+                </div>
+            {% endfor %}
 
-
+    </div>
+        {% endfor %}
+        <style>
+            [id=checkbox] {
+                display: none;
+                position: absolute;
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+                    /* IMAGE STYLES */
+            [id=checkbox] + img {
+                box-shadow: 3px 3px 5px dimgray;
+                border: 2px solid rgb(53, 202, 202);
+                padding: 5px;
+                display: block;
+                position: relative;
+                margin: 3px;
+                cursor: pointer;
+                border-radius: 5px;
+                height: 60px;
+                width: 60px;
+                flex:33.33%; 
+            }
+           
+                    /* CHECKED STYLES */
+            [id=checkbox]:checked + img {
+                border: 2px solid rgb(12, 52, 112);
+                border-radius: 5px;
+                -moz-outline-radius: 5px;
+            }
+            .content {
+                max-width: 500px;
+                margin:auto;
+            }
+    </style>
+    <h5 style="color: red;font-size: 15px;">NOTE: Please select at least 3 images</h5>
+</div>
+<button class="button is-block is-info is-large is-fullwidth">Log in</button>
+</form>
     <a href="{{url_for('register')}}">Don't have an account? Sign up</a>
+</div>
 </body>
 </html>
