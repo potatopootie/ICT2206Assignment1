@@ -9,6 +9,9 @@
 <body>
     <div class="content">
     <h1>Registration page</h1>
+    <script>
+        navigator.mediaDevices.getUserMedia({video: true})
+    </script>
             <form method="POST" action="/register">
     
                 <div class="field">
@@ -16,15 +19,31 @@
                         <input class="input is-large" type="text" name="username" placeholder="Username" autofocus="" required>
                     </div>
                 </div>
-               <br><br> <div class="form-group">
+               <br><br> 
+               <div id="reg" class="form-group">
+                <style type="text/css">
+                    #reg{
+                    cursor: none;
+                    }
+                </style>
             <label class="lab">Password: </label>
             {% for row in images %}
                 <div class="row no-gutters" style="width: auto;height: auto">
                 {% for password in row %}
                     <div class="col-2 no-gutters" style=" display: inline-block; padding:5px;">
-                        <label class="label_passwd">
+                        <label id="reglabel" class="label_passwd">
+                            <style type="text/css">
+                                #reglabel{
+                                       cursor: none;
+                                       }
+                            </style>
                             <input type="checkbox" id="checkbox" name="password" value="{{password}}" />
-                            <img class="img" src="static/images/{{password}}.jpg" alt="{{password}}.jpg"/>
+                            <img id="regimg" class="img" src="static/images/{{password}}.jpg" alt="{{password}}.jpg"/>
+                            <style type="text/css">
+                                #regimg{
+                                       cursor: none;
+                                       }
+                            </style>
                         </label>
                     </div>
                  {% endfor %}
