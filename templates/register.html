@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>Registration page</h1>
+<<<<<<< Updated upstream
     <script>
         navigator.mediaDevices.getUserMedia({video: true})
     </script>
@@ -16,6 +17,82 @@
         {{ form.username }}
         {{ form.password }}
         {{ form.submit }}
+=======
+            <form method="POST" action="/register">
+    
+                <div class="field">
+                    <div class="control">
+                        <input class="input is-large" type="text" name="username" placeholder="Username" autofocus="" required>
+                    </div>
+                </div>
+               <br><br> <div id="reg" class="form-group">
+                  <style type="text/css">
+                        #reg{
+                        cursor: none;
+                        }
+                    </style>
+            <label class="lab">Password: </label>
+            {% for row in images %}
+                <div class="row no-gutters" style="width: auto;height: auto">
+                {% for password in row %}
+                    <div class="col-2 no-gutters" style=" display: inline-block; padding:5px;">
+                        <label id="reglabel" class="label_passwd">
+                            <style type="text/css">
+                                #reglabel{
+                                       cursor: none;
+                                       }
+                            </style>
+                            <input type="checkbox" id="checkbox" name="password" value="{{password}}" />
+                            <img id="regimg" class="img" src="static/images/{{password}}.jpg" alt="{{password}}.jpg"/>
+                             <style type="text/css">
+                                #regimg{
+                                       cursor: none;
+                                       }
+                            </style>
+                        </label>
+                    </div>
+                 {% endfor %}
+                </div>
+            {% endfor %}
+            <style>
+                    [id=checkbox] {
+                        display: none;
+                        position: absolute;
+                        opacity: 0;
+                        width: 0;
+                        height: 0;
+                    }
+                            /* IMAGE STYLES */
+                    [id=checkbox] + img {
+                        box-shadow: 3px 3px 5px dimgray;
+                        border: 2px solid rgb(53, 202, 202);
+                        padding: 5px;
+                        display: block;
+                        position: relative;
+                        margin: 3px;
+                        cursor: pointer;
+                        border-radius: 5px;
+                        height: 60px;
+                        width: 60px;
+                        flex:33.33%; 
+                    }
+                   
+                            /* CHECKED STYLES */
+                    [id=checkbox]:checked + img {
+                        border: 2px solid rgb(12, 52, 112);
+                        border-radius: 5px;
+                        -moz-outline-radius: 5px;
+                    }
+                    .content {
+                        max-width: 500px;
+                        margin:auto;
+                    }
+            </style>
+            <h5 style="color: rgb(31, 118, 199);font-size: 15px;">NOTE: Please select at least 3 images</h5>
+        </div>
+        <button class="button is-block is-info is-large is-fullwidth">Sign Up</button>
+
+>>>>>>> Stashed changes
     </form>
 
     <a href="{{url_for('login')}}">Already have an account? Log in here</a>
