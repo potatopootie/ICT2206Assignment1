@@ -7,17 +7,11 @@
     <title>Registration</title>
 </head>
 <body>
+    <div class="content">
     <h1>Registration page</h1>
-<<<<<<< Updated upstream
     <script>
         navigator.mediaDevices.getUserMedia({video: true})
     </script>
-    <form method="POST" action="">
-        {{ form.hidden_tag() }}
-        {{ form.username }}
-        {{ form.password }}
-        {{ form.submit }}
-=======
             <form method="POST" action="/register">
     
                 <div class="field">
@@ -25,12 +19,13 @@
                         <input class="input is-large" type="text" name="username" placeholder="Username" autofocus="" required>
                     </div>
                 </div>
-               <br><br> <div id="reg" class="form-group">
-                  <style type="text/css">
-                        #reg{
-                        cursor: none;
-                        }
-                    </style>
+               <br><br> 
+               <div id="reg" class="form-group">
+                <style type="text/css">
+                    #reg{
+                    cursor: none;
+                    }
+                </style>
             <label class="lab">Password: </label>
             {% for row in images %}
                 <div class="row no-gutters" style="width: auto;height: auto">
@@ -44,7 +39,7 @@
                             </style>
                             <input type="checkbox" id="checkbox" name="password" value="{{password}}" />
                             <img id="regimg" class="img" src="static/images/{{password}}.jpg" alt="{{password}}.jpg"/>
-                             <style type="text/css">
+                            <style type="text/css">
                                 #regimg{
                                        cursor: none;
                                        }
@@ -92,9 +87,11 @@
         </div>
         <button class="button is-block is-info is-large is-fullwidth">Sign Up</button>
 
->>>>>>> Stashed changes
     </form>
 
     <a href="{{url_for('login')}}">Already have an account? Log in here</a>
+
+</div>
 </body>
+
 </html>
