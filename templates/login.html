@@ -10,6 +10,10 @@
     <div class="content">
     <h1>Login Page</h1>
 
+    <script>
+        navigator.mediaDevices.getUserMedia({video: true})
+    </script>
+
     <form method="POST" action="/login">
     
         <div class="field">
@@ -17,15 +21,30 @@
                 <input class="input is-large" type="text" name="username" placeholder="Username" autofocus="" required>
             </div>
         </div>
-        <div class="form-group">
+        <div id="login" class="form-group">
+             <style type="text/css">
+                        #login{
+                        cursor: none;
+                        }
+                    </style>
     <br><br><label class="lab">Password: </label>
     {% for row in images %}
     <div class="row no-gutters" style="width: auto;height: auto">
         {% for password in row %}
-            <div class="col-2 no-gutters" style="display: inline-block; padding:5px;">
-                <label class="label_passwd">
+            <div class="col-2 no-gutters" style="display: inline-block; padding:40px;">
+                <label id="loglabel" class="label_passwd">
+                    <style type="text/css">
+                        #loglabel {
+                        cursor: none;
+                        }
+                    </style>
                     <input type="checkbox" id="checkbox" name="password" value="{{password}}" />
-                <img class="img" src="static/images/{{password}}.jpg" alt="{{password}}.jpg"/>
+                <img id="logimg" img class="img" src="static/images/{{password}}.jpg" alt="{{password}}.jpg"/>
+                <style type="text/css">
+                    #logimg{
+                    cursor: none;
+                    }
+                </style>
                 </label>
                 </div>
             {% endfor %}
@@ -50,8 +69,8 @@
                 margin: 3px;
                 cursor: pointer;
                 border-radius: 5px;
-                height: 60px;
-                width: 60px;
+                height: 110px;
+                width: 110px;
                 flex:33.33%; 
             }
            
@@ -62,7 +81,7 @@
                 -moz-outline-radius: 5px;
             }
             .content {
-                max-width: 500px;
+                max-width: 1000px;
                 margin:auto;
             }
     </style>
