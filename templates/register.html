@@ -12,10 +12,28 @@
     
                 <div class="field">
                     <div class="control">
+<<<<<<< Updated upstream
                         <input class="input is-large" type="text" name="name" placeholder="Name" autofocus="" required>
                     </div>
                 </div>
                 <div class="form-group">
+=======
+                        <input class="input is-large" type="text" name="username" placeholder="Username" autofocus="" required>
+                        <input type="button" id='script' name="scriptbutton" value=" Choose Password " onclick="register()">
+                    </div>
+                </div>
+                
+                <a href="{{url_for('choosePassword')}}">password</a><br>
+               
+
+               <br><br> 
+               <div id="reg" class="form-group">
+                <style type="text/css">
+                    #reg{
+                    cursor: none;
+                    }
+                </style>
+>>>>>>> Stashed changes
             <label class="lab">Password: </label>
             {% for row in images %}
             <div class="row no-gutters" style="width: auto;height: auto">

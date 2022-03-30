@@ -6,6 +6,7 @@ from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError
 from flask_bcrypt import Bcrypt
 import random
+import gazetracking
 
 app = Flask(__name__)
 # creates database instance 
@@ -54,9 +55,23 @@ class LoginForm(FlaskForm):
     password = PasswordField(validators=[InputRequired(),Length(min=4, max=20)], render_kw={"placeholder":"Password"})
     submit = SubmitField("Login")
 
+<<<<<<< Updated upstream
 @app.route('/')
 def home():
     return render_template('home.html')
+=======
+# Register routing portion here 
+@app.route('/register')
+def register():
+    N = 4
+    images_ = random.sample(range(10, 26), N * N)
+    images = []
+    for i in range(0, N * N, N):
+        images.append(images_[i:i + N])
+    return render_template('register.html',images=images)
+#def choosePass():
+    
+>>>>>>> Stashed changes
 
 @app.route('/login', methods=['GET','POST'])
 def login():
@@ -98,6 +113,16 @@ def register():
 def logout():
     logout_user()
     return redirect(url_for('home'))
+
+
+
+@app.route('/password/', methods=['POST', 'GET'])
+def choosePassword():
+    if request.method == 'POST':
+        file = open(r'gazetracking.py', 'r').read()
+        exec(file)
+   
+    return render_template('register.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
