@@ -70,10 +70,10 @@ def register_post():
         password_1 = sorted(request.form.getlist('password'))
         password_1 = ''.join(map(str, password_1))
         if len(password_1) == 6:
+            password = password_1
+        else:
             flash("password must be 3 selections")
             return redirect(url_for('register'))
-        else:
-            password = password_1
     user = User.query.filter_by(username=username).first()
     # Username validation error if username already exists. 
     if user:
@@ -106,11 +106,11 @@ def login_post():
     else:
         password_1= sorted(request.form.getlist('password'))
         password_1 =''.join(map(str, password_1))
-        if len(password_1) ==6:
+        if len(password_1) == 6:
+            password = password_1
+        else:
             flash("password must be 3 selections")
             return redirect(url_for('login'))
-        else:
-            password = password_1
 
     user = User.query.filter_by(username=username).first()
 
