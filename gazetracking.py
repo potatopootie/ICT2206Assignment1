@@ -7,8 +7,7 @@ from tensorflow.python.keras.layers import *
 from tensorflow.python.keras.optimizers import *
 
 # directory of the images used to train the model
-#image_path = 'C:/Users/maris/OneDrive/Documents/GitHub/ICT2206Assignment1/test/' #change path accordingly
-image_path = 'C:/Users/maris/OneDrive/Desktop/UNIVERSITY/2206/2206_Assignment1/test/'
+image_path = 'C:/Users/maris/OneDrive/Documents/GitHub/ICT2206Assignment1/test/' #change path accordingly
 # Load cascade classifier detection object
 cascade = cv2.CascadeClassifier("haarcascade_eye.xml")
 # On the web camera
