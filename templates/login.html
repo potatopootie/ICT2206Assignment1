@@ -21,13 +21,16 @@
                 <input class="input is-large" type="text" name="username" placeholder="Username" autofocus="" required>
             </div>
         </div>
+        <br>
+        <a href="{{url_for('choosePasswordLogin')}}">Choose Password</a>
+        <h5 style="color: red;font-size: 15px;">NOTE: Please select your password</h5>
         <div id="login" class="form-group">
              <style type="text/css">
                         #login{
                         cursor: none;
                         }
                     </style>
-    <br><br><label class="lab">Password: </label>
+    <label class="lab">Password: </label>
     {% for row in images %}
     <div class="row no-gutters" style="width: auto;height: auto">
         {% for password in row %}
@@ -85,7 +88,6 @@
                 margin:auto;
             }
     </style>
-    <h5 style="color: red;font-size: 15px;">NOTE: Please select at least 3 images</h5>
 </div>
 <button class="button is-block is-info is-large is-fullwidth">Log in</button>
 </form>
