@@ -69,7 +69,7 @@ def register_post():
     else:
         password_1 = sorted(request.form.getlist('password'))
         password_1 = ''.join(map(str, password_1))
-        if len(password_1) < 6:
+        if len(password_1) == 6:
             flash("password must be 3 selections")
             return redirect(url_for('register'))
         else:
@@ -106,7 +106,7 @@ def login_post():
     else:
         password_1= sorted(request.form.getlist('password'))
         password_1 =''.join(map(str, password_1))
-        if len(password_1) < 2:
+        if len(password_1) ==6:
             flash("password must be 3 selections")
             return redirect(url_for('login'))
         else:
