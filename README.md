@@ -5,3 +5,7 @@ It also uses a gaze tracking function in collaboration with the graphical passwo
 
 ## Installation Guide
 Windows - enter 'pip3 install flask flask_sqlalchemy flask_login flask_wtf wtforms tensorflow opencv-python pyautogui' onto terminal 
+
+## TO use
+run python .\app.py
+(make sure to allow camera permission)
