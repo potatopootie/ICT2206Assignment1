@@ -21,12 +21,12 @@
                 </div>
                 <br>
                 <a href="{{url_for('choosePasswordRegister')}}">Choose Password</a>
-                <h5 style="color: rgb(31, 118, 199);font-size: 15px;">NOTE: Please select at least 3 images</h5>
-               <br>
-               <div id="reg" class="form-group">
+                <h5 style="color: rgb(31, 118, 199);font-size: 15px;">NOTE: Please select 3 images</h5>
+                
+                <div id="reg" class="form-group">
                 <style type="text/css">
                     #reg{
-                    cursor: auto;
+                    cursor: none;
                     }
                 </style>
             <label class="lab">Password: </label>
@@ -37,14 +37,14 @@
                         <label id="reglabel" class="label_passwd">
                             <style type="text/css">
                                 #reglabel{
-                                       cursor: auto;
+                                       cursor: none;
                                        }
                             </style>
                             <input type="checkbox" id="checkbox" name="password" value="{{password}}" />
                             <img id="regimg" class="img" src="static/images/{{password}}.jpg" alt="{{password}}.jpg"/>
                             <style type="text/css">
                                 #regimg{
-                                       cursor: auto;
+                                       cursor: none;
                                        }
                             </style>
                         </label>

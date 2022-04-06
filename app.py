@@ -1,3 +1,4 @@
+import imp
 from flask import Flask, render_template, url_for, redirect, request, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, login_user, LoginManager, login_required,  logout_user, current_user
@@ -7,6 +8,7 @@ from wtforms.validators import InputRequired, Length, ValidationError
 from werkzeug.security import generate_password_hash, check_password_hash
 import random
 import subprocess
+import signal
 
 app = Flask(__name__)
 # creates database instance 
@@ -133,15 +135,23 @@ def logout():
     logout_user()
     return redirect(url_for('home'))
 
+
 @app.route('/password_register')
 def choosePasswordRegister():
-   result = subprocess.check_output("python gazetracking.py", shell=True)
-   return render_template('register.html', **locals())
+    try:
+        subprocess.check_output("python gazetracking.py", shell=True,stderr=subprocess.STDOUT)
+        return render_template('register.html', **locals())
+    except subprocess.CalledProcessError as e:
+        raise RuntimeError("command '{}' return with error (code {}): {}".format(e.cmd, e.returncode, e.output))
 
 @app.route('/password_login')
 def choosePasswordLogin():
-   result = subprocess.check_output("python gazetracking.py", shell=True)
-   return render_template('login.html', **locals())
+    try:
+        subprocess.check_output("python gazetracking.py", shell=True,stderr=subprocess.STDOUT)
+        return render_template('login.html', **locals())
+    except subprocess.CalledProcessError as e:
+        raise RuntimeError("command '{}' return with error (code {}): {}".format(e.cmd, e.returncode, e.output))
+
 
 if __name__ == '__main__':
     app.run(debug=True)
