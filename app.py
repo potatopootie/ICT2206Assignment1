@@ -1,4 +1,3 @@
-import imp
 from flask import Flask, render_template, url_for, redirect, request, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, login_user, LoginManager, login_required,  logout_user, current_user
@@ -69,11 +68,12 @@ def register_post():
     else:
         password_1 = sorted(request.form.getlist('password'))
         password_1 = ''.join(map(str, password_1))
-        if len(password_1) < 6:
-            flash("password must be minimum 3 selections")
-            return redirect(url_for('register'))
-        else:
+        if len(password_1) == 6:
             password = password_1
+        else:
+            flash("password must be 3 selections")
+            return redirect(url_for('register'))
+
     user = User.query.filter_by(username=username).first()
     # Username validation error if username already exists. 
     if user:
@@ -104,11 +104,12 @@ def login_post():
     else:
         password_1= sorted(request.form.getlist('password'))
         password_1 =''.join(map(str, password_1))
-        if len(password_1) < 2:
-            flash("password must be minimum 3 selections")
-            return redirect(url_for('login'))
-        else:
+        if len(password_1) == 6:
             password = password_1
+        else:
+            flash("password must be 3 selections")
+            return redirect(url_for('login'))
+            
 
     user = User.query.filter_by(username=username).first()
 
